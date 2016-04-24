@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>LinkedIn</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+	<!-- CSS -->
+	<link href="./style.css" rel="stylesheet" type="text/css">
+
+	<!-- AngularJs -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body >
+
+<div class="container" ng-app="myApp" ng-controller="myCtrl">
+	<div >
+		<p>{{firstName + " " + lastName}}</p>
+	</div>
+
+	<!-- Info -->
+	<div>
+		<!-- Background header -->
+		<div class="row">
+			<div class="col-sm-2"><p class="blackbackground whitetext textcentervertical textcenter"><strong>Background</strong></p></div>
+			<div class="col-sm-10"></div>
+		</div>
+
+		<!-- Background content-->
+		<div class="marginleft">
+		  <!-- Summary -->
+			<div>
+				<div class="normalrow">
+					<div><img src="./images/summarylogo.png" alt="summarylogo" width="30" height="35"/></div>
+					<div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Summary</p></div>
+				</div>
+				<div>
+					<p>
+						Internet executive with over 20 years of experience, including general management of mid to large size organizations, corporate development, product development, business operations, and strategy.
+						<br><br>
+						Currently CEO at LinkedIn, the web's largest and most powerful network of professionals.
+						<br><br>
+						Prior to LinkedIn, was an Executive in Residence at Accel Partners and Greylock Partners. Primarily focused on advising the leadership teams of the firm's existing consumer technology portfolio companies while also working closely with the firm’s partners to evaluate new investment opportunities.
+						<br><br>
+						Previously served in key leadership roles at Yahoo! for over seven years, most recently as the Executive Vice President of Yahoo!'s Network Division managing Yahoo's consumer web product portfolio, including Yahoo's Front Page, Mail, Search, and Media products.
+						<br><br>
+						Specialties: general management, corporate development, product development, business operations, strategy, product marketing, non-profit governance
+					</p>
+				</div>
+			</div>
+			<hr/>
+
+			<!-- Experience -->
+			<div>
+				<div class="normalrow">
+					<div><img src="./images/experiencelogo.png" alt="experiencelogo" width="30" height="35"/></div>
+					<div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Experience</p></div>
+				</div>
+				<div>
+					<p>{{firstName + " " + lastName}}<p>
+				</div>
+			</div>
+			<hr/>
+
+			<!-- Project -->
+			<div>
+				<div class="normalrow">
+					<div><img src="./images/experiencelogo.png" alt="experiencelogo" width="30" height="35"/></div>
+					<div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Project</p></div>
+				</div>
+				<div>
+					<p>{{firstName}}<p>
+				</div>
+			</div>
+			<hr/>
+
+			<!-- Skill -->
+			<div>
+				<div class="normalrow">
+					<div><img src="./images/skilllogo.png" alt="skilllogo" width="30" height="35"/></div>
+					<div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Skills</p></div>
+				</div>
+				<div>
+					<p><p>
+				</div>
+			 </div>
+			<hr/>
+
+			<!-- Experience -->
+			<div>
+				<div class="normalrow">
+					<div><img src="./images/educationlogo.png" alt="educationlogo" width="30" height="35"/></div>
+					<div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Education</p></div>
+				</div>
+				<br>
+				<div>
+					<p class="contenttextsize"><strong>University of Pennsylvania - The Wharton School</strong></p>
+					<p>Bachelor of Science, Economics</p>
+					<p>1988 – June 1992</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName= "John";
+    $scope.lastName= "Doe";
+});
+</script>
+
+</body>
+</html>
