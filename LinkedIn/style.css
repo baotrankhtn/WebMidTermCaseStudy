@@ -2,80 +2,88 @@
 /* Main background*/
 #backgroundimage
 {
-  background-image: url("./images/background.jpg"); background-repeat: no-repeat; background-size: 100% 100%;
+	background-image: url("./images/mainbackground.png"); background-repeat: no-repeat; background-size: 100% 100%;
+}
+
+/* White background for cards */
+.cardbackground
+{
+	background-color: white;
+}
+
+/* Margin for card*/
+.card
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right: 135px;
+	margin-left: 135px;
+}
+
+/* Small font for posts */
+#postfontsize
+{
+	font-size: 12px;
+}
+
+/* Footer text color */
+#footertextcolor
+{
+	color: #6D7B8D;
 }
 
 /* For summary text, experience text, ... */
-.marginleft
+.marginleftright
 {
-  margin-left: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
-/**/
+/* skill image margin*/
+.skillmargin
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+/* float left*/
 .normalrow
 {
-  display: flex;
+	display: flex;
 }
 
 /* Summary, Experience, ... text size*/
 .contenttextsize
 {
-  font-size: 16px;
+	font-size: 16px;
 }
 
 .whitebackground
 {
-  background-color: white;
+	background-color: white;
 }
 
 .blackbackground
 {
-  background-color: black;
+	background-color: black;
 }
 
 .whitetext
 {
-  color: white;
+	color: white;
 }
 
 .textcenter
 {
-  text-align: center;
+	text-align: center;
 }
 
 .textcentervertical
 {
-  padding-bottom: 5px;
-  padding-top: 5px;
+	padding-bottom: 5px;
+	padding-top: 5px;
 }
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
 
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
-}
 
 
