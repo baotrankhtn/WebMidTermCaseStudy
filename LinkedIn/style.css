@@ -7,6 +7,13 @@
     overflow: hidden;
 }
 
+.topimage{
+	min-width: 974px; 
+	background-image: url(./images/mainsubbackground.png); 
+	background-size: 100%; 
+	background-position: 50% 0px;
+}
+
 .verysmallfontsize
 {
 	font-size: 11px;
@@ -55,6 +62,11 @@
 	margin-bottom: 20px;
 	margin-right: 135px;
 	margin-left: 135px;
+}
+
+/* Center search box in navigation bar*/
+.nav-collapse{
+    margin-right: 50%;
 }
 
 /* Right align*/
@@ -148,7 +160,5 @@
 	padding-bottom: 5px;
 	padding-top: 5px;
 }
-
-
 
 

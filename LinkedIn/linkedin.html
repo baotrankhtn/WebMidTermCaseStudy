@@ -17,12 +17,84 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 </head>
+
 <body id="backgroundimage">
-	
-<div id="premium-image-container">
-	<div id="premium-image" style="top: 20px; min-width: 974px; background-image: url(./images/mainsubbackground.png); background-size: 100%; background-position: 50% 0px;"></div>
+<!-- Fixed Navigation Bar -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">	
+	<div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="./images/linkedinlogo.png" width="25" height="25">
+      </a>
+    </div>
+	<div class="center-block">
+		<form class="navbar-form" role="search">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Search for people, jobs, companies, and more ..." name="srch-term" id="srch-term">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
 
+
+<div class="container">
+  <div class="text-center">
+    <br>
+	<br>
+  </div>
+  
+</div><!-- /.container -->
+
+<!-- Main Navigation Bar-->
+<nav class="navbar navbar-inverse navbar-static-top">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
+				<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Edit Profile</a></li>
+					<li><a href="#">Who's Viewed Your Profile</a></li>
+					<li><a href="#">Your Updates</a></li> 
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">My Network
+				<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Connection</a></li>
+					<li><a href="#">Add Contacts</a></li>
+					<li><a href="#">People You May Know</a></li> 
+				</ul>
+			</li>
+			<li><a href="#">Education</a></li> 
+			<li><a href="#">Jobs</a></li> 
+			<li><a href="#">Interests</a></li> 
+			
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Business Services
+				<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Talent Solutions</a></li>
+					<li><a href="#">Post A Job</a></li>
+					<li><a href="#">Advertises</a></li> 
+				</ul>
+			</li>
+			<li><a href="#">Try Premium For Free</a></li> 
+		</ul>
+	</div>
+</nav>	
+	
+<div id="premium-image-container">
+	<div id="premium-image" class="topimage"></div>
+</div>
+
+<!-- Main Content of Website-->
 <div class="container">
 	<!-- Top card -->
 	<div class="card cardbackground">
@@ -145,7 +217,7 @@
 					<div class="col-sm-10">
 						<p class="contenttextsize"><strong>CEO</strong></p>
 						<p>LinkedIn</p>
-						<p>December 2008 – Present (7 years 5 months)</p>
+						<p class="graycolor">December 2008 – Present (7 years 5 months)</p>
 						<br>
 						<p>Connecting the world's professionals to make them more productive and successful. Since joining the company in December 2008, LinkedIn has expanded its global platform to 23 languages and more than 30 offices around the world, grown its membership base from 33M to more than 347M, and increased its revenue from $78M to over $2.2B in 2014.</p>
 					</div>
@@ -173,7 +245,7 @@
 					<div class="col-sm-10">
 						<p class="contenttextsize"><strong>Member, Board of Directors</strong></p>
 						<p>Intuit</p>
-						<p>April 2012 – Present (4 years 1 month)Mountain View, CA</p>
+						<p class="graycolor">April 2012 – Present (4 years 1 month)Mountain View, CA</p>
 						<br>
 						<p>With revenue of $4B+ and approximately 8,000 employees, Intuit is a leading provider of innovative business and financial management solutions for small and medium-sized businesses, consumers, accounting professionals and financial institutions.</p>
 					</div>
@@ -186,7 +258,7 @@
 					<div class="col-sm-10">
 						<p class="contenttextsize"><strong>Executive Vice President Network Division</strong></p>
 						<p>Yahoo!</p>
-						<p>May 2001 – June 2008 (7 years 2 months)</p>
+						<p class="graycolor">May 2001 – June 2008 (7 years 2 months)</p>
 						<br>
 						<p>Led a team of over 3,000 employees, managing products reaching over 500 million consumers, and overseeing a P&L responsible for roughly $3 billion in annual revenue. Helped drive the Network’s Open and Social strategy and growth of the company’s category-leading consumer web products, including Yahoo's Front Page, Mail, Search, and Media products, e.g. News, Sports, Finance, Entertainment. 
 						    <br><br>
@@ -207,7 +279,7 @@
 				</div>
 				<br>
 				<div>
-					<p>2005 Sucessfull CEO principles<p>
+					<p>2005 Sucessful CEO principles<p>
 					<p>2008 Business strategy for start-up companies<p>
 					<p>2016 Ecomomy trend project<p>
 					<br>
