@@ -6,21 +6,15 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>LinkedIn Web MidTerm Case Study</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-  <!-- CSS -->
-  <link href="./style.css" rel="stylesheet" type="text/css">
 
   <!-- AngularJs -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -31,14 +25,6 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
 
   <!-- Fixed Navigation Bar -->
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -121,28 +107,28 @@
     <!-- Top card -->
     <div class="card cardbackground">
       <div class="row">
-        <div class="col-sm-3"><img src="./images/avatar.png" alt="logo" width="100%" height="100%"/></div>
+        <div class="col-sm-3"><img src="{{basicinfo.avatar}}" alt="logo" width="100%" height="100%"/></div>
         <div class="col-sm-9" id="topcardtopmargin">
           <div class="row">
             <div class="col-sm-9">
-              <p class="bigfontsize"><strong>Jeff Weiner</strong></p>
-              <p class="mediumfontsize" class="graycolor">CEO at LinkedIn</p>
-              <p>San Francisco Bay Area | Internet</p>
+              <p class="bigfontsize"><strong>{{basicinfo.name}}</strong></p>
+              <p class="mediumfontsize" class="greycolor">{{experience[0].position + " at " + experience[0].company}}</p>
+              <p>{{basicinfo.address}}</p>
             </div>
             <div class="col-sm-3"><img src="./images/linkedinlogo.png" alt="logo" width="65" height="65"/></div>
           </div>
           <div>
             <div class="row">
-              <div class="col-sm-2"><p class="smallfontsize graycolor">Current</p></div>
-              <div class="col-sm-10"><p class="smallfontsize">LinkedIn, Intuit, DonorsChoose</p></div>
+              <div class="col-sm-2"><p class="smallfontsize greycolor">Current</p></div>
+              <div class="col-sm-10"><p class="smallfontsize">{{basicinfo.current}}</p></div>
             </div>
             <div class="row">
-              <div class="col-sm-2"><p class="smallfontsize graycolor">Previous</p></div>
-              <div class="col-sm-10"><p class="smallfontsize">Malaria No More, Accel Partners, Greylock</p></div>
+              <div class="col-sm-2"><p class="smallfontsize greycolor">Previous</p></div>
+              <div class="col-sm-10"><p class="smallfontsize">{{basicinfo.previous}}</p></div>
             </div>
             <div class="row">
-              <div class="col-sm-2"><p class="smallfontsize graycolor">Education</p></div>
-              <div class="col-sm-10"><p class="smallfontsize">University of Pennsylvania - The Wharton School</p></div>
+              <div class="col-sm-2"><p class="smallfontsize greycolor">Education</p></div>
+              <div class="col-sm-10"><p class="smallfontsize">{{education[0].university}}</p></div>
             </div>
           </div>
           <br>
@@ -164,13 +150,15 @@
             </div>
             <div class="col-sm-3">
               <p class="bigfontsize"><strong>4,034,163</strong></p>
-              <p class="verysmallfontsize graycolor rightalign">followers</p>
+              <p class="verysmallfontsize greycolor rightalign">followers</p>
             </div>
           </div>
         </div>
       </div>
       <br>
-      <img src="./images/topcardfooter.png" alt="logo" width="100%" height="100%"/>
+      <div class="normalrow" id="topcardfooterbackground">
+        <p id="topcardfootertextleftpadding" class="greycolor verysmallfontsize">{{basicinfo.contact}}</p>
+      </div>
     </div>
 
     <!-- Post -->
@@ -212,8 +200,11 @@
           </div>
           <br>
           <div>
-            <p>{{summary.content}}</p>
+            <ul>
+              <li ng-repeat="s in summary"><p>{{ s.content }}</p></li>
+            </ul>
           </div>
+
         </div>
         <hr/>
 
@@ -224,63 +215,38 @@
             <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Experience</p></div>
           </div>
           <br>
-          <!-- LinnkedIn -->
-          <div class="row">
-            <div class="col-sm-10">
-              <p class="contenttextsize"><strong>CEO</strong></p>
-              <p>LinkedIn</p>
-              <p class="graycolor">December 2008 – Present (7 years 5 months)</p>
+          <!-- LinnkedIn, .... -->
+          <ul>
+            <li ng-repeat="e in experience">
+              <div class="row">
+                <div class="col-sm-10">
+                  <p class="contenttextsize"><strong>{{e.position}}</strong></p>
+                  <p>{{e.company}}</p>
+                  <p class="greycolor">{{e.duration}}</p>
+                  <br>
+                  <p>{{e.description}}</p>
+                </div>
+                <div class="col-sm-2"><img src="{{e.logo}}" alt="logo" width="70%"/></div>
+              </div>
               <br>
-              <p>Connecting the world's professionals to make them more productive and successful. Since joining the company in December 2008, LinkedIn has expanded its global platform to 23 languages and more than 30 offices around the world, grown its membership base from 33M to more than 347M, and increased its revenue from $78M to over $2.2B in 2014.</p>
-            </div>
-            <div class="col-sm-2"><img src="./images/linkedinlogo.png" alt="logo" width="65" height="65"/></div>
+            </li>
+          </ul>
+        </div>
+        <br>
+        <!-- LinkedIn articles -->
+        <div>
+          <div class="row">
+            <div class="col-sm-6"><img src="./images/article1.png" alt="logo" width="100%" height="100%"/></div>
+            <div class="col-sm-6"><img src="./images/article2.png" alt="logo" width="100%" height="100%"/></div>
           </div>
           <br>
-
-          <!-- LinkedIn articles -->
-          <div>
-            <div class="row">
-              <div class="col-sm-6"><img src="./images/article1.png" alt="logo" width="100%" height="100%"/></div>
-              <div class="col-sm-6"><img src="./images/article2.png" alt="logo" width="100%" height="100%"/></div>
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-sm-4"><img src="./images/article3.png" alt="logo" width="100%" height="100%"/></div>
-              <div class="col-sm-4"><img src="./images/article4.png" alt="logo" width="100%" height="100%"/></div>
-              <div class="col-sm-4"><img src="./images/article5.png" alt="logo" width="100%" height="100%"/></div>
-            </div>
-          </div>
-          <br>
-
-          <!-- Intuit -->
           <div class="row">
-            <div class="col-sm-10">
-              <p class="contenttextsize"><strong>Member, Board of Directors</strong></p>
-              <p>Intuit</p>
-              <p class="graycolor">April 2012 – Present (4 years 1 month)Mountain View, CA</p>
-              <br>
-              <p>With revenue of $4B+ and approximately 8,000 employees, Intuit is a leading provider of innovative business and financial management solutions for small and medium-sized businesses, consumers, accounting professionals and financial institutions.</p>
-            </div>
-            <div class="col-sm-2"><img src="./images/intuitlogo.png" alt="logo" width="75" height="65"/></div>
-          </div>
-          <br><br>
-
-          <!-- Yahoo -->
-          <div class="row">
-            <div class="col-sm-10">
-              <p class="contenttextsize"><strong>Executive Vice President Network Division</strong></p>
-              <p>Yahoo!</p>
-              <p class="graycolor">May 2001 – June 2008 (7 years 2 months)</p>
-              <br>
-              <p>Led a team of over 3,000 employees, managing products reaching over 500 million consumers, and overseeing a P&L responsible for roughly $3 billion in annual revenue. Helped drive the Network’s Open and Social strategy and growth of the company’s category-leading consumer web products, including Yahoo's Front Page, Mail, Search, and Media products, e.g. News, Sports, Finance, Entertainment.
-                <br><br>
-                Previously, was part of the Search leadership team that directed the acquisition and integration of Inktomi, AltaVista, FAST as well as the development of Yahoo! Search Technology. Oversaw development of Yahoo! Answers, and led the acquisitions of Flickr and del.icio.us. Helped lead the team formed to revitalize the company's Search Marketing efforts.
-                <br><br>
-                From 2001 to 2002, oversaw Corporate Development at Yahoo!, responsible for the development and modification of overall corporate and individual business unit strategy and M&A.</p>
-            </div>
-            <div class="col-sm-2"><img src="./images/yahoologo.png" alt="logo" width="110" height="65"/></div>
+            <div class="col-sm-4"><img src="./images/article3.png" alt="logo" width="100%" height="100%"/></div>
+            <div class="col-sm-4"><img src="./images/article4.png" alt="logo" width="100%" height="100%"/></div>
+            <div class="col-sm-4"><img src="./images/article5.png" alt="logo" width="100%" height="100%"/></div>
           </div>
         </div>
+        <br>
         <hr/>
 
         <!-- Project -->
@@ -291,11 +257,11 @@
           </div>
           <br>
           <div>
-            <p>2005 Sucessful CEO principles<p>
-            <p>2008 Business strategy for start-up companies<p>
-            <p>2016 Ecomomy trend project<p>
-            <br>
+            <ul>
+              <li ng-repeat="p in project"><p>{{ p.content }}</p></li>
+            </ul>
           </div>
+          <br>
         </div>
         <hr/>
 
@@ -308,13 +274,16 @@
           <br>
           <p>Top skills</p>
           <br>
-          <div>
-            <img class="skillmargin" src="./images/skill1.png" alt="logo"/><br>
-            <img class="skillmargin" src="./images/skill2.png" alt="logo"/><br>
-            <img class="skillmargin" src="./images/skill3.png" alt="logo"/><br>
-            <img class="skillmargin" src="./images/skill4.png" alt="logo"/><br>
-            <img class="skillmargin" src="./images/skill5.png" alt="logo"/>
-          </div>
+          <ul>
+            <li ng-repeat="s in skill">
+              <div>
+                <div class="normalrow">
+                  <div><p class="whitetext skillratebackground skillratetextfontsize skillratetextpadding">{{s.rate}}</p></div>
+                  <div><p class="skillbackground">&nbsp;&nbsp;&nbsp;{{s.skillname}}&nbsp;&nbsp;&nbsp;</p></div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
         <hr/>
 
@@ -325,14 +294,18 @@
             <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Education</p></div>
           </div>
           <br>
-          <div class="row">
-            <div class="col-sm-10">
-              <p class="contenttextsize"><strong>University of Pennsylvania - The Wharton School</strong></p>
-              <p>Bachelor of Science, Economics</p>
-              <p>1988 – June 1992</p>
-            </div>
-            <div class="col-sm-2"><img src="./images/universitylogo.png" alt="logo" width="65" height="65"/></div>
-          </div>
+          <ul>
+            <li ng-repeat="e in education">
+              <div class="row">
+                <div class="col-sm-10">
+                      <p class="contenttextsize"><strong>{{e.university}}</strong></p>
+                      <p>{{e.degree}}</p>
+                      <p>{{e.duration}}</p>
+                </div>
+                <div class="col-sm-2"><img src="{{e.image}}" alt="logo" width="65" height="65"/></div>
+              </div>
+            </li>
+          </ul>
           <br>
         </div>
 
@@ -341,23 +314,12 @@
 
     <!-- Footer -->
     <div class="card" id="footertextcolor">
-      <div><p>Help Center | About | Careers | Advertising | Talent Solutions | Small Business | Mobile | Language | Upgrade Your Account</p><div>
-        <div><p>LinkedIn Corporation &copy; 2016 | User Agreement | Privacy Policy | Ad Choices | Community Guidelines | Cookie Policy | Copyright Policy</p></div>
-      </div>
+      <div><p>Help Center | About | Careers | Advertising | Talent Solutions | Small Business | Mobile | Language | Upgrade Your Account</p></div>
+      <div><p>LinkedIn Corporation &copy; 2016 | User Agreement | Privacy Policy | Ad Choices | Community Guidelines | Cookie Policy | Copyright Policy</p></div>
+    </div>
+  </div>
 
-      </div>
-
-      <script>
-        var app = angular.module('myApp',[]);
-
-        app.controller('myCtrl', function ($scope, $http) {
-          $http.get('./json/summary.json').success(function(data) {
-            $scope.summary = data;
-          });
-        });
-
-
-      </script>
-
+  <!-- Source -->
+  <script src="app.js"></script>
 </body>
 </html>

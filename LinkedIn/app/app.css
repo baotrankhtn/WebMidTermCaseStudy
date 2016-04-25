@@ -1,4 +1,11 @@
 /* app css stylesheet */
+/* List without pullets */ul
+{
+  list-style-type: none;
+  padding:0;
+  margin:0;
+}
+
 #premium-image-container {
   position: relative;
   height: 300px;
@@ -11,6 +18,31 @@
   background-image: url(./images/mainsubbackground.png);
   background-size: 100%;
   background-position: 50% 0px;
+}
+
+.skillratebackground
+{
+  padding: 0px;
+  background-image: url(./images/rate.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.skillratetextpadding
+{
+  padding: 2px;
+}
+
+.skillratetextfontsize
+{
+  font-size: 12px;
+}
+
+.skillbackground
+{
+  background-image: url(./images/skill.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .verysmallfontsize
@@ -40,6 +72,20 @@
   background-image: url("./images/mainbackground.png"); background-repeat: no-repeat; background-size: 100% 100%;
 }
 
+/* Backround for top card footer*/
+#topcardfooterbackground
+{
+  background-image: url("./images/topcardfooter.png"); background-repeat: no-repeat; background-size: 100% 100%;
+}
+
+/* Padding left for top card footer text*/
+#topcardfootertextleftpadding
+{
+  padding-left: 45px;
+  padding-top: 16px;
+  padding-bottom: 6px;
+}
+
 /* White background for cards */
 .cardbackground
 {
@@ -67,7 +113,7 @@
 }
 
 /* Gray clor*/
-.graycolor
+.greycolor
 {
   color: #A39D9D;
 }
@@ -134,6 +180,16 @@
 .blackbackground
 {
   background-color: black;
+}
+
+.bluebackground
+{
+  background-color: deepskyblue;
+}
+
+.greybackground
+{
+  background-color: darkgray;
 }
 
 .whitetext
