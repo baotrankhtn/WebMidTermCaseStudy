@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <!-- CSS -->
+  <link href="./style.css" rel="stylesheet" type="text/css">
+
+  <!-- AngularJs -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular-sanitize.js"></script>
+
+</head>
+<body id="backgroundimage">
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+
+  <!-- Fixed Navigation Bar -->
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="./images/linkedinlogo.png" width="25" height="25">
+      </a>
+    </div>
+    <div class="center-block">
+      <form class="navbar-form" role="search">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search for people, jobs, companies, and more ..." name="srch-term" id="srch-term">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="text-center">
+      <br>
+      <br>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- Main Navigation Bar-->
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Edit Profile</a></li>
+            <li><a href="#">Who's Viewed Your Profile</a></li>
+            <li><a href="#">Your Updates</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Network
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Connection</a></li>
+            <li><a href="#">Add Contacts</a></li>
+            <li><a href="#">People You May Know</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Education</a></li>
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">Interests</a></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Business Services
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Talent Solutions</a></li>
+            <li><a href="#">Post A Job</a></li>
+            <li><a href="#">Advertises</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Try Premium For Free</a></li>
+      </ul>
+    </div>
+    <div id="premium-image-container">
+      <div id="premium-image" class="topimage"></div>
+    </div>
+  </nav>
+
+
+
+  <!-- Main Content of Website-->
+  <div class="container" ng-app="myApp" ng-controller="myCtrl">
+    <!-- Top card -->
+    <div class="card cardbackground">
+      <div class="row">
+        <div class="col-sm-3"><img src="./images/avatar.png" alt="logo" width="100%" height="100%"/></div>
+        <div class="col-sm-9" id="topcardtopmargin">
+          <div class="row">
+            <div class="col-sm-9">
+              <p class="bigfontsize"><strong>Jeff Weiner</strong></p>
+              <p class="mediumfontsize" class="graycolor">CEO at LinkedIn</p>
+              <p>San Francisco Bay Area | Internet</p>
+            </div>
+            <div class="col-sm-3"><img src="./images/linkedinlogo.png" alt="logo" width="65" height="65"/></div>
+          </div>
+          <div>
+            <div class="row">
+              <div class="col-sm-2"><p class="smallfontsize graycolor">Current</p></div>
+              <div class="col-sm-10"><p class="smallfontsize">LinkedIn, Intuit, DonorsChoose</p></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2"><p class="smallfontsize graycolor">Previous</p></div>
+              <div class="col-sm-10"><p class="smallfontsize">Malaria No More, Accel Partners, Greylock</p></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2"><p class="smallfontsize graycolor">Education</p></div>
+              <div class="col-sm-10"><p class="smallfontsize">University of Pennsylvania - The Wharton School</p></div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Follow
+                  <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">View recent activity</a></li>
+                  <li><a href="#">Connect</a></li>
+                  <li><a href="#">Share profile</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-7">
+              <p class="verysmallfontsize">Know Jeff?</p>
+              <p class="verysmallfontsize bluecolor">Connect</p>
+            </div>
+            <div class="col-sm-3">
+              <p class="bigfontsize"><strong>4,034,163</strong></p>
+              <p class="verysmallfontsize graycolor rightalign">followers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <img src="./images/topcardfooter.png" alt="logo" width="100%" height="100%"/>
+    </div>
+
+    <!-- Post -->
+    <div class="card cardbackground">
+      <!-- Header -->
+      <div class="row">
+        <div class="col-sm-2"><p class="blackbackground whitetext textcentervertical textcenter"><strong>Posts</strong></p></div>
+        <div class="col-sm-10"></div>
+      </div>
+
+      <!-- Content-->
+      <div class="marginleftright">
+        <div>Published by Jeff</div>
+        <div id="postfontsize">See more&raquo;</div>
+        <div class="row">
+          <div class="col-sm-4"><img src="./images/article3.png" alt="logo" width="100%" height="100%"/></div>
+          <div class="col-sm-4"><img src="./images/article4.png" alt="logo" width="100%" height="100%"/></div>
+          <div class="col-sm-4"><img src="./images/article5.png" alt="logo" width="100%" height="100%"/></div>
+        </div>
+        <br>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="card cardbackground">
+      <!-- Header -->
+      <div class="row">
+        <div class="col-sm-2"><p class="blackbackground whitetext textcentervertical textcenter"><strong>Background</strong></p></div>
+        <div class="col-sm-10"></div>
+      </div>
+
+      <!-- Content-->
+      <div class="marginleftright">
+        <!-- Summary -->
+        <div>
+          <div class="normalrow">
+            <div><img src="./images/summarylogo.png" alt="summarylogo" width="30" height="35"/></div>
+            <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Summary</p></div>
+          </div>
+          <br>
+          <div>
+            <p>{{summary.content}}</p>
+          </div>
+        </div>
+        <hr/>
+
+        <!-- Experience -->
+        <div>
+          <div class="normalrow">
+            <div><img src="./images/experiencelogo.png" alt="experiencelogo" width="30" height="35"/></div>
+            <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Experience</p></div>
+          </div>
+          <br>
+          <!-- LinnkedIn -->
+          <div class="row">
+            <div class="col-sm-10">
+              <p class="contenttextsize"><strong>CEO</strong></p>
+              <p>LinkedIn</p>
+              <p class="graycolor">December 2008 – Present (7 years 5 months)</p>
+              <br>
+              <p>Connecting the world's professionals to make them more productive and successful. Since joining the company in December 2008, LinkedIn has expanded its global platform to 23 languages and more than 30 offices around the world, grown its membership base from 33M to more than 347M, and increased its revenue from $78M to over $2.2B in 2014.</p>
+            </div>
+            <div class="col-sm-2"><img src="./images/linkedinlogo.png" alt="logo" width="65" height="65"/></div>
+          </div>
+          <br>
+
+          <!-- LinkedIn articles -->
+          <div>
+            <div class="row">
+              <div class="col-sm-6"><img src="./images/article1.png" alt="logo" width="100%" height="100%"/></div>
+              <div class="col-sm-6"><img src="./images/article2.png" alt="logo" width="100%" height="100%"/></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-4"><img src="./images/article3.png" alt="logo" width="100%" height="100%"/></div>
+              <div class="col-sm-4"><img src="./images/article4.png" alt="logo" width="100%" height="100%"/></div>
+              <div class="col-sm-4"><img src="./images/article5.png" alt="logo" width="100%" height="100%"/></div>
+            </div>
+          </div>
+          <br>
+
+          <!-- Intuit -->
+          <div class="row">
+            <div class="col-sm-10">
+              <p class="contenttextsize"><strong>Member, Board of Directors</strong></p>
+              <p>Intuit</p>
+              <p class="graycolor">April 2012 – Present (4 years 1 month)Mountain View, CA</p>
+              <br>
+              <p>With revenue of $4B+ and approximately 8,000 employees, Intuit is a leading provider of innovative business and financial management solutions for small and medium-sized businesses, consumers, accounting professionals and financial institutions.</p>
+            </div>
+            <div class="col-sm-2"><img src="./images/intuitlogo.png" alt="logo" width="75" height="65"/></div>
+          </div>
+          <br><br>
+
+          <!-- Yahoo -->
+          <div class="row">
+            <div class="col-sm-10">
+              <p class="contenttextsize"><strong>Executive Vice President Network Division</strong></p>
+              <p>Yahoo!</p>
+              <p class="graycolor">May 2001 – June 2008 (7 years 2 months)</p>
+              <br>
+              <p>Led a team of over 3,000 employees, managing products reaching over 500 million consumers, and overseeing a P&L responsible for roughly $3 billion in annual revenue. Helped drive the Network’s Open and Social strategy and growth of the company’s category-leading consumer web products, including Yahoo's Front Page, Mail, Search, and Media products, e.g. News, Sports, Finance, Entertainment.
+                <br><br>
+                Previously, was part of the Search leadership team that directed the acquisition and integration of Inktomi, AltaVista, FAST as well as the development of Yahoo! Search Technology. Oversaw development of Yahoo! Answers, and led the acquisitions of Flickr and del.icio.us. Helped lead the team formed to revitalize the company's Search Marketing efforts.
+                <br><br>
+                From 2001 to 2002, oversaw Corporate Development at Yahoo!, responsible for the development and modification of overall corporate and individual business unit strategy and M&A.</p>
+            </div>
+            <div class="col-sm-2"><img src="./images/yahoologo.png" alt="logo" width="110" height="65"/></div>
+          </div>
+        </div>
+        <hr/>
+
+        <!-- Project -->
+        <div>
+          <div class="normalrow">
+            <div><img src="./images/experiencelogo.png" alt="experiencelogo" width="30" height="35"/></div>
+            <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Project</p></div>
+          </div>
+          <br>
+          <div>
+            <p>2005 Sucessful CEO principles<p>
+            <p>2008 Business strategy for start-up companies<p>
+            <p>2016 Ecomomy trend project<p>
+            <br>
+          </div>
+        </div>
+        <hr/>
+
+        <!-- Skill -->
+        <div>
+          <div class="normalrow">
+            <div><img src="./images/skilllogo.png" alt="skilllogo" width="30" height="35"/></div>
+            <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Skills</p></div>
+          </div>
+          <br>
+          <p>Top skills</p>
+          <br>
+          <div>
+            <img class="skillmargin" src="./images/skill1.png" alt="logo"/><br>
+            <img class="skillmargin" src="./images/skill2.png" alt="logo"/><br>
+            <img class="skillmargin" src="./images/skill3.png" alt="logo"/><br>
+            <img class="skillmargin" src="./images/skill4.png" alt="logo"/><br>
+            <img class="skillmargin" src="./images/skill5.png" alt="logo"/>
+          </div>
+        </div>
+        <hr/>
+
+        <!-- Education -->
+        <div>
+          <div class="normalrow">
+            <div><img src="./images/educationlogo.png" alt="educationlogo" width="30" height="35"/></div>
+            <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Education</p></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-10">
+              <p class="contenttextsize"><strong>University of Pennsylvania - The Wharton School</strong></p>
+              <p>Bachelor of Science, Economics</p>
+              <p>1988 – June 1992</p>
+            </div>
+            <div class="col-sm-2"><img src="./images/universitylogo.png" alt="logo" width="65" height="65"/></div>
+          </div>
+          <br>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="card" id="footertextcolor">
+      <div><p>Help Center | About | Careers | Advertising | Talent Solutions | Small Business | Mobile | Language | Upgrade Your Account</p><div>
+        <div><p>LinkedIn Corporation &copy; 2016 | User Agreement | Privacy Policy | Ad Choices | Community Guidelines | Cookie Policy | Copyright Policy</p></div>
+      </div>
+
+      </div>
+
+      <script>
+        var app = angular.module('myApp',[]);
+
+        app.controller('myCtrl', function ($scope, $http) {
+          $http.get('./json/summary.json').success(function(data) {
+            $scope.summary = data;
+          });
+        });
+
+
+      </script>
+
+</body>
+</html>
