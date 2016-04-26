@@ -1,5 +1,37 @@
 /* app css stylesheet */
-/* List without pullets */ul
+
+/* Input size */
+.textboxclass {
+  height: 400px;
+  width: 700px;
+}
+
+/* Edit button margin top and bottom*/
+.topbottommargin
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Add content button width*/
+.addcontentbutton
+{
+  width: 100%;
+}
+
+/* Searchbox left margin */
+#searboxlogoleftmargin
+{
+  margin-left: 430px;
+}
+
+#searchboxleftmargin
+{
+  margin-left: 450px;
+}
+
+/* List without pullets */
+ul
 {
   list-style-type: none;
   padding:0;
