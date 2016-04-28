@@ -254,7 +254,7 @@
     </div>
 
     <!-- Info -->
-    <div class="card cardbackground">
+    <div class="card cardbackground" ng-controller="infoCtrl">
       <!-- Header -->
       <div class="row">
         <div class="col-sm-2"><p class="blackbackground whitetext textcentervertical textcenter"><strong>Background</strong></p></div>
@@ -270,25 +270,23 @@
             <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Summary</p></div>
           </div>
           <br>
-          <div>
-            <ul>
-              <li ng-repeat="s in summary"><p>{{ s.content }}</p></li>
-            </ul>
-          </div>
 
-          <div ng-show="true">
+          <div ng-hide="summaryEditorEnabled">
+              <p>{{ summary.content }}</p>
+          </div>
+          <div ng-show="summaryEditorEnabled">
             <div>
               <!--<input ng-model="editableSummary" ng-show="true" type="text" class="textboxclass"> <!--summaryEditorEnabled-->
-              <textarea ng-model="editableSummary" ng-show="true" cols="90" rows="20" ></textarea>
+              <textarea ng-model="editableSummary" name="msg" ng-show="true" cols="90" rows="20" ></textarea>
             </div>
             <div>
-              <button ng-click="save('summary')" type="button" class="btn btn-primary topbottommargin">Save</button>
+              <button ng-click="saveSummary()" type="button" class="btn btn-primary topbottommargin">Save</button>
               &nbsp;&nbsp;&nbsp;
-              <button ng-click="cancel('summary')" type="button" class="btn btn-danger topbottommargin">Cancel</button>
+              <button ng-click="cancelSummary()" type="button" class="btn btn-danger topbottommargin">Cancel</button>
             </div>
           </div>
 
-          <button type="button" class="btn btn-info addcontentbutton topbottommargin">Edit Summary</button>
+          <button type="button" class="btn btn-info addcontentbutton topbottommargin" ng-click="clickEditSummary()">Edit Summary</button>
         </div>
         <hr/>
 

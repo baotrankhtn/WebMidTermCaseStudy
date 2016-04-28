@@ -49,7 +49,8 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
   $scope.backgroundColorPrevious = "white";
   $scope.backgroundColorContact = "white";
 
-  $scope.editableSummary = "abc";
+
+  $scope.editableSummary = "abckasdksajdhf";
 
   //============================================================================
   // enter Top Card: show edit icon
@@ -177,6 +178,30 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
         break;
     }
   };
+}).controller('infoCtrl', function($scope) {
+  // ============= Summary ============
+  $scope.summaryEditorEnabled = false;
+
+  // Open editor
+  $scope.clickEditSummary = function()
+  {
+    $scope.summaryEditorEnabled = true;
+    $scope.editableSummary = $scope.summary.content;
+  }
+
+  // Save
+  $scope.saveSummary = function()
+  {
+    $scope.summary.content = $scope.editableSummary;
+    $scope.cancelSummary();
+  }
+
+  // Cancel
+  $scope.cancelSummary= function()
+  {
+    $scope.summaryEditorEnabled = false;
+  }
 });
+
 
 
