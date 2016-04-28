@@ -332,7 +332,7 @@
         <hr/>
 
         <!-- Project -->
-        <div>
+        <div ng-mouseenter="enterProject()" ng-mouseleave="leaveProject()">
           <div class="normalrow">
             <div><img src="./images/experiencelogo.png" alt="experiencelogo" width="30" height="35"/></div>
             <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Project</p></div>
@@ -340,10 +340,33 @@
           <br>
           <div>
             <ul>
-              <li ng-repeat="p in project"><p>{{ p.content }}</p></li>
+              <li ng-repeat="p in project">
+                <div class="normalrow" ng-hide="projectEditorEnabled($index)">
+                  <p>{{ p.content }}</p>
+                  <img ng-style="{'background-color': backgroundColor}" ng-mouseenter="enterProjectContent($index)" ng-mouseleave="leaveProjectContent($index)" ng-click="clickProjectContent($index)" ng-show="projectEditorIconEnabled" src="./images/pencil.png" alt="logo" width="25" height="25"/>
+                </div>
+                <div ng-show="projectEditorEnabled($index)">
+                  <input ng-model="model[$index]" >
+                  <a href="#" ng-click="saveProject($index)">Save</a>
+                  or
+                  <a href="#" ng-click="cancelProject()">Cancel</a>
+                </div>
+              </li>
             </ul>
           </div>
           <br>
+          <div ng-show="projectAddEnabled">
+            <div>
+              <!--<input ng-model="editableSummary" ng-show="true" type="text" class="textboxclass"> <!--summaryEditorEnabled-->
+              <textarea ng-model="newProject" name="msg" ng-show="true" cols="90" rows="3" ></textarea>
+            </div>
+            <div>
+              <button ng-click="saveNewProject()" type="button" class="btn btn-primary topbottommargin">Save</button>
+              &nbsp;&nbsp;&nbsp;
+              <button ng-click="cancelNewProject()" type="button" class="btn btn-danger topbottommargin">Cancel</button>
+            </div>
+          </div>
+          <button type="button" class="btn btn-info addcontentbutton topbottommargin" ng-click="clickAddProject()">Add Project</button>
         </div>
         <hr/>
 

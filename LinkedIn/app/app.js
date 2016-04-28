@@ -49,9 +49,6 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
   $scope.backgroundColorPrevious = "white";
   $scope.backgroundColorContact = "white";
 
-
-  $scope.editableSummary = "abckasdksajdhf";
-
   //============================================================================
   // enter Top Card: show edit icon
   $scope.enterTopCard = function()
@@ -178,7 +175,7 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
         break;
     }
   };
-}).controller('infoCtrl', function($scope) {
+}).controller('infoCtrl', function($scope) { //<======================= 5 cards
   // ============= Summary ============
   $scope.summaryEditorEnabled = false;
 
@@ -200,6 +197,74 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
   $scope.cancelSummary= function()
   {
     $scope.summaryEditorEnabled = false;
+  }
+
+  // =============== Project ==============
+  $scope.projectEditorIconEnabled = false;
+  $scope.chosen = -1;
+  $scope.model = [];
+
+  // Show/Hide editor icon
+  $scope.enterProject = function()
+  {
+    $scope.projectEditorIconEnabled = true;
+  }
+
+  $scope.leaveProject = function()
+  {
+    $scope.projectEditorIconEnabled = false;
+  }
+
+  // Click editor icon
+  $scope.clickProjectContent = function(index)
+  {
+    $scope.chosen = index;
+    $scope.model[index] = $scope.project[index].content;
+  }
+
+  // If chosen, open editor
+  $scope.projectEditorEnabled = function(index)
+  {
+    if (index == $scope.chosen)
+        return true;
+    return false;
+  }
+
+  // Save edit
+  $scope.saveProject = function(index)
+  {
+    $scope.project[index].content = $scope.model[index];
+    $scope.cancelProject();
+  }
+
+  // Cancel edit
+  $scope.cancelProject = function()
+  {
+    $scope.chosen = -1;
+  }
+
+  // Add project
+  $scope.projectAddEnabled = false;
+
+  // Add project button
+  $scope.clickAddProject = function()
+  {
+    $scope.projectAddEnabled = true;
+    $scope.newProject = "";
+  }
+
+  // Save and cancel new project
+  $scope.saveNewProject = function()
+  {
+    // add new project
+    $scope.newProjectItem = { "content": $scope.newProject};
+    $scope.project.push($scope.newProjectItem );
+    $scope.cancelNewProject();
+  }
+
+  $scope.cancelNewProject = function()
+  {
+    $scope.projectAddEnabled = false;
   }
 });
 
