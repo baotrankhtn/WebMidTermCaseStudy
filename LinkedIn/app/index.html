@@ -119,9 +119,9 @@
                 </div>
                 <div ng-show="nameEditorEnabled">
                   <input ng-model="editableName" ng-show="nameEditorEnabled">
-                  <a href="#" ng-click="save('name')">Save</a>
+                  <a ng-click="save('name')">Save</a>
                   or
-                  <a href="#" ng-click="cancel('name')">Cancel</a>
+                  <a ng-click="cancel('name')">Cancel</a>
                 </div>
               </div>
               <div>
@@ -131,9 +131,9 @@
                 </div>
                 <div ng-show="experienceEditorEnabled">
                   <input ng-model="editableExperience" ng-show="experienceEditorEnabled">
-                  <a href="#" ng-click="save('experience')">Save</a>
+                  <a ng-click="save('experience')">Save</a>
                   or
-                  <a href="#" ng-click="cancel('experience')">Cancel</a>
+                  <a ng-click="cancel('experience')">Cancel</a>
                 </div>
               </div>
               <div>
@@ -143,9 +143,9 @@
                 </div>
                 <div ng-show="addressEditorEnabled">
                   <input ng-model="editableAddress" ng-show="addressEditorEnabled">
-                  <a href="#" ng-click="save('address')">Save</a>
+                  <a ng-click="save('address')">Save</a>
                   or
-                  <a href="#" ng-click="cancel('address')">Cancel</a>
+                  <a ng-click="cancel('address')">Cancel</a>
                 </div>
               </div>
             </div>
@@ -162,9 +162,9 @@
                   </div>
                   <div ng-show="currentEditorEnabled">
                     <input ng-model="editableCurrent" ng-show="currentEditorEnabled">
-                    <a href="#" ng-click="save('current')">Save</a>
+                    <a ng-click="save('current')">Save</a>
                     or
-                    <a href="#" ng-click="cancel('current')">Cancel</a>
+                    <a ng-click="cancel('current')">Cancel</a>
                   </div>
                 </div>
               </div>
@@ -179,9 +179,9 @@
                   </div>
                   <div ng-show="previousEditorEnabled">
                     <input ng-model="editablePrevious" ng-show="previousEditorEnabled">
-                    <a href="#" ng-click="save('previous')">Save</a>
+                    <a ng-click="save('previous')">Save</a>
                     or
-                    <a href="#" ng-click="cancel('previous')">Cancel</a>
+                    <a ng-click="cancel('previous')">Cancel</a>
                   </div>
                 </div>
               </div>
@@ -224,9 +224,9 @@
           </div>
           <div ng-show="contactEditorEnabled">
             <input ng-model="editableContact" ng-show="contactEditorEnabled">
-            <a href="#" ng-click="save('contact')">Save</a>
+            <a ng-click="save('contact')">Save</a>
             or
-            <a href="#" ng-click="cancel('contact')">Cancel</a>
+            <a ng-click="cancel('contact')">Cancel</a>
           </div>
         </div>
       </div>
@@ -343,13 +343,16 @@
               <li ng-repeat="p in project">
                 <div class="normalrow" ng-hide="projectEditorEnabled($index)">
                   <p>{{ p.content }}</p>
-                  <img ng-style="{'background-color': backgroundColor}" ng-mouseenter="enterProjectContent($index)" ng-mouseleave="leaveProjectContent($index)" ng-click="clickProjectContent($index)" ng-show="projectEditorIconEnabled" src="./images/pencil.png" alt="logo" width="25" height="25"/>
+                  <img ng-click="clickProjectContent($index)" ng-show="projectEditorIconEnabled" src="./images/pencil.png" alt="logo" width="25" height="25"/>
                 </div>
                 <div ng-show="projectEditorEnabled($index)">
                   <input ng-model="model[$index]" >
-                  <a href="#" ng-click="saveProject($index)">Save</a>
+                  <a ng-click="saveProject($index)">Save</a>
                   or
-                  <a href="#" ng-click="cancelProject()">Cancel</a>
+                  <a ng-click="cancelProject()">Cancel</a>
+                  or
+                  <a ng-click="removeProject($index)">Remove</a>
+
                 </div>
               </li>
             </ul>
@@ -371,7 +374,7 @@
         <hr/>
 
         <!-- Skill -->
-        <div>
+        <div ng-mouseenter="enterSkill()" ng-mouseleave="leaveSkill()">
           <div class="normalrow">
             <div><img src="./images/skilllogo.png" alt="skilllogo" width="30" height="35"/></div>
             <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Skills</p></div>
@@ -381,14 +384,39 @@
           <br>
           <ul>
             <li ng-repeat="s in skill">
-              <div>
+              <div ng-hide="skillEditorEnabled($index)">
                 <div class="normalrow">
                   <div><p class="whitetext skillratebackground skillratetextfontsize skillratetextpadding">{{s.rate}}</p></div>
                   <div><p class="skillbackground">&nbsp;&nbsp;&nbsp;{{s.skillname}}&nbsp;&nbsp;&nbsp;</p></div>
+                  <img ng-click="clickSkillContent($index)" ng-show="skillEditorIconEnabled" src="./images/pencil.png" alt="logo" width="25" height="25"/>
                 </div>
               </div>
+              <div ng-show="skillEditorEnabled($index)">
+                <input ng-model="modelSkillRate[$index]" >
+                <input ng-model="modelSkillName[$index]" >
+                <a ng-click="saveSkill($index)">Save</a>
+                or
+                <a ng-click="cancelSkill()">Cancel</a>
+                or
+                <a ng-click="removeSkill($index)">Remove</a>
             </li>
           </ul>
+          <div ng-show="skillAddEnabled">
+            <div>
+              <!--<input ng-model="editableSummary" ng-show="true" type="text" class="textboxclass"> <!--summaryEditorEnabled-->
+              Rate<br>
+              <textarea ng-model="newSkillRate" ng-show="true" cols="20" rows="1" ></textarea><br>
+              Area of expertise<br>
+              <textarea ng-model="newSkillName" ng-show="true" cols="90" rows="1" ></textarea>
+            </div>
+            <div>
+              <button ng-click="saveNewSkill()" type="button" class="btn btn-primary topbottommargin">Save</button>
+              &nbsp;&nbsp;&nbsp;
+              <button ng-click="cancelNewSkill()" type="button" class="btn btn-danger topbottommargin">Cancel</button>
+              &nbsp;&nbsp;&nbsp;
+            </div>
+          </div>
+          <button type="button" class="btn btn-info addcontentbutton topbottommargin" ng-click="clickAddSkill()">Add Skill</button>
         </div>
         <hr/>
 

@@ -4,7 +4,7 @@
 var app = angular.module('myApp', []);
 
 app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for all content
-  // Load summary
+                                                    // Load summary
   $http.get('./json/summary.json').success(function(data) {
     $scope.summary = data;
   });
@@ -176,7 +176,7 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
     }
   };
 }).controller('infoCtrl', function($scope) { //<======================= 5 cards
-  // ============= Summary ============
+  // =============================================== Summary =========================================================
   $scope.summaryEditorEnabled = false;
 
   // Open editor
@@ -199,7 +199,7 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
     $scope.summaryEditorEnabled = false;
   }
 
-  // =============== Project ==============
+  // =================================================== Project ======================================================
   $scope.projectEditorIconEnabled = false;
   $scope.chosen = -1;
   $scope.model = [];
@@ -226,7 +226,7 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
   $scope.projectEditorEnabled = function(index)
   {
     if (index == $scope.chosen)
-        return true;
+      return true;
     return false;
   }
 
@@ -241,6 +241,13 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
   $scope.cancelProject = function()
   {
     $scope.chosen = -1;
+  }
+
+  // Remove
+  $scope.removeProject = function(index)
+  {
+    $scope.project.splice(index, 1);
+    $scope.cancelProject();
   }
 
   // Add project
@@ -266,7 +273,80 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
   {
     $scope.projectAddEnabled = false;
   }
+
+  //============================================== Skill =========================================================
+  // Edit skill
+  $scope.skillEditorIconEnabled = false;
+  $scope.modelSkillRate = [];
+  $scope.modelSkillName = [];
+  $scope.chosenSkill = -1;
+
+  // Show editor
+  $scope.skillEditorEnabled = function(index)
+  {
+    if (index == $scope.chosenSkill)
+        return true;
+    return false;
+  }
+
+  $scope.clickSkillContent = function(index)
+  {
+    $scope.chosenSkill = index;
+    $scope.modelSkillRate[index] = $scope.skill[index].rate;
+    $scope.modelSkillName[index] = $scope.skill[index].skillname;
+  }
+
+  // Cancel edtting
+  $scope.cancelSkill = function()
+  {
+    $scope.chosenSkill = -1;
+  }
+
+  // Save editted skill
+  $scope.saveSkill = function(index)
+  {
+    $scope.skill[index].rate = $scope.modelSkillRate[index];
+    $scope.skill[index].skillname = $scope.modelSkillName[index];
+    $scope.cancelSkill();
+  }
+  // Remove skill
+  $scope.removeSkill = function(index)
+  {
+    $scope.skill.splice(index, 1);
+    $scope.cancelSkill();
+  }
+
+  // Show/Hide skill editor icon
+  $scope.enterSkill = function()
+  {
+    $scope.skillEditorIconEnabled = true;
+  }
+
+  $scope.leaveSkill = function()
+  {
+    $scope.skillEditorIconEnabled = false;
+  }
+
+
+  // Add new skill
+  $scope.skillAddEnabled = false;
+
+  $scope.clickAddSkill = function()
+  {
+    $scope.newSkillRate = "";
+    $scope.newSkillName = "";
+    $scope.skillAddEnabled = true;
+  }
+
+  $scope.cancelNewSkill = function()
+  {
+    $scope.skillAddEnabled = false;
+  }
+
+  $scope.saveNewSkill = function()
+  {
+    $scope.newItem = {"rate": $scope.newSkillRate, "skillname": $scope.newSkillName};
+    $scope.skill.push($scope.newItem);
+    $scope.cancelNewSkill();
+  }
 });
-
-
-
