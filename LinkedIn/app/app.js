@@ -444,4 +444,113 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
     $scope.education.push($scope.newItem);
     $scope.cancelNewEducation();
   }
+
+  //=========================================== Experience =====================================================
+  $scope.month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+      "November", "December"];
+  $scope.experienceAddEnabled = false;
+
+  // Show add new experience dialog
+  $scope.clickAddExperience = function()
+  {
+    $scope.positionExperience = "";
+    $scope.companyExperience = "";
+    $scope.descriptionExperience = "";
+    $scope.experienceAddEnabled = true;
+  }
+
+  // Cancel adding new experience
+  $scope.cancelNewExperience = function()
+  {
+    $scope.experienceAddEnabled = false;
+  }
+
+  // Save new experience
+  $scope.saveNewExperience = function() {
+    $scope.newItem = {
+      "position": $scope.positionExperience,
+      "company": $scope.companyExperience,
+      "startmonth": $scope.monthAttendedExperience,
+      "startyear": $scope.yearAttendedExperience,
+      "endmonth": $scope.monthEndedExprience,
+      "endyear": $scope.yearEndedExprience,
+      "description": $scope.descriptionExperience,
+      "logo": "./images/linkedinlogo.png"
+    }
+
+    $scope.experience.push($scope.newItem);
+    $scope.cancelNewExperience();
+  }
+  // ----- Edit experienxe
+  $scope.chosenExperience = -1;
+  $scope.modelPositionExperience = [];
+  $scope.modelCompanyExperience = [];
+  $scope.modelMonthAttendedExperience = [];
+  $scope.modelYearAttendedExperience = [];
+  $scope.modelMonthEndedExprience = [];
+  $scope.modelYearEndedExprience = [];
+  $scope.modelDescriptionExperience = [];
+
+  $scope.experienceEditorIconEnabled = false;
+
+  // Show/Hide editor icon
+  $scope.enterExperience = function()
+  {
+    $scope.experienceEditorIconEnabled = true;
+  }
+
+  $scope.leaveExperience = function()
+  {
+    $scope.experienceEditorIconEnabled = false;
+  }
+
+  // Click to show Editor Dialog
+  $scope.clickExperienceContent = function(index)
+  {
+    // Show content
+    $scope.modelPositionExperience[index] = $scope.experience[index].position;
+    $scope.modelCompanyExperience[index] = $scope.experience[index].company;
+    $scope.modelMonthAttendedExperience[index] = $scope.experience[index].startmonth;
+    $scope.modelYearAttendedExperience[index] = $scope.experience[index].startyear;
+    $scope.modelMonthEndedExprience[index] = $scope.experience[index].endmonth;
+    $scope.modelYearEndedExprience[index] = $scope.experience[index].endyear;
+    $scope.modelDescriptionExperience[index] = $scope.experience[index].description;
+
+    $scope.chosenExperience = index;
+  }
+
+  $scope.experienceEditorEnabled = function(index)
+  {
+    if ($scope.chosenExperience == index)
+        return true;
+    return false;
+  }
+
+  // Cancel editor
+  $scope.cancelExperience = function()
+  {
+    $scope.chosenExperience = -1;
+  }
+
+  // Remove
+  $scope.removeExperience = function(index)
+  {
+    $scope.experience.splice(index, 1);
+    $scope.cancelExperience();
+  }
+
+  // Save
+  $scope.saveExperience = function(index)
+  {
+    $scope.experience[index].position = $scope.modelPositionExperience[index];
+    $scope.experience[index].company = $scope.modelCompanyExperience[index];
+    $scope.experience[index].startmonth = $scope.modelMonthAttendedExperience[index];
+    $scope.experience[index].startyear = $scope.modelYearAttendedExperience[index];
+    $scope.experience[index].endmonth = $scope.modelMonthEndedExprience[index];
+    $scope.experience[index].endyear = $scope.modelYearEndedExprience[index];
+    $scope.experience[index].description = $scope.modelDescriptionExperience[index];
+
+    $scope.cancelExperience();
+  }
+
 });

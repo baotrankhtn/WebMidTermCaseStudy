@@ -2,21 +2,30 @@
   {
     "position": "CEO",
     "company": "LinkedIn",
-    "duration": "December 2008 – Present (7 years 5 months)",
+    "startmonth": "December",
+    "startyear": 2008,
+    "endmonth": "January",
+    "endyear": 2016,
     "description": "Connecting the world's professionals to make them more productive and successful. Since joining the company in December 2008, LinkedIn has expanded its global platform to 23 languages and more than 30 offices around the world, grown its membership base from 33M to more than 347M, and increased its revenue from $78M to over $2.2B in 2014.",
     "logo": "./images/linkedinlogo.png"
   },
   {
     "position": "Member, Board of Directors",
     "company": "Intuit",
-    "duration": "April 2012 – Present (4 years 1 month)Mountain View, CA",
+    "startmonth": "April",
+    "startyear": 2012,
+    "endmonth": "January",
+    "endyear": 2016,
     "description": "With revenue of $4B+ and approximately 8,000 employees, Intuit is a leading provider of innovative business and financial management solutions for small and medium-sized businesses, consumers, accounting professionals and financial institutions.",
     "logo": "./images/intuitlogo.png"
   },
   {
     "position": "Executive Vice President Network Division",
     "company": "Yahoo!",
-    "duration": "May 2001 – June 2008 (7 years 2 months)",
+    "startmonth": "May",
+    "startyear": 2001,
+    "endmonth": "June",
+    "endyear": 2008,
     "description": "Led a team of over 3,000 employees, managing products reaching over 500 million consumers, and overseeing a P&L responsible for roughly $3 billion in annual revenue. Helped drive the Network’s Open and Social strategy and growth of the company’s category-leading consumer web products, including Yahoo's Front Page, Mail, Search, and Media products, e.g. News, Sports, Finance, Entertainment. Previously, was part of the Search leadership team that directed the acquisition and integration of Inktomi, AltaVista, FAST as well as the development of Yahoo! Search Technology. Oversaw development of Yahoo! Answers, and led the acquisitions of Flickr and del.icio.us. Helped lead the team formed to revitalize the company's Search Marketing efforts. From 2001 to 2002, oversaw Corporate Development at Yahoo!, responsible for the development and modification of overall corporate and individual business unit strategy and M&A.",
     "logo": "./images/yahoologo.png"
   }

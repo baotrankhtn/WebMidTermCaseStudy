@@ -291,7 +291,7 @@
         <hr/>
 
         <!-- Experience -->
-        <div>
+        <div ng-mouseenter="enterExperience()" ng-mouseleave="leaveExperience()">
           <div class="normalrow">
             <div><img src="./images/experiencelogo.png" alt="experiencelogo" width="30" height="35"/></div>
             <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Experience</p></div>
@@ -300,19 +300,60 @@
           <!-- LinnkedIn, .... -->
           <ul>
             <li ng-repeat="e in experience">
-              <div class="row">
+              <div class="row" ng-hide="experienceEditorEnabled($index)">
                 <div class="col-sm-10">
                   <p class="contenttextsize"><strong>{{e.position}}</strong></p>
                   <p>{{e.company}}</p>
-                  <p class="greycolor">{{e.duration}}</p>
+                  <p class="greycolor">{{e.startmonth + " " + e.startyear + " - " + e.endmonth + " " + e.endyear
+                    + " (" + (e.endyear - e.startyear) + " years)"}}</p>
                   <br>
                   <p>{{e.description}}</p>
+                  <img ng-click="clickExperienceContent($index)" ng-show="experienceEditorIconEnabled" src="./images/pencil.png" alt="logo" width="25" height="25"/>
                 </div>
                 <div class="col-sm-2"><img src="{{e.logo}}" alt="logo" width="70%"/></div>
+              </div>
+              <div ng-show="experienceEditorEnabled($index)">
+                <input ng-model="modelPositionExperience[$index]" >
+                <input ng-model="modelCompanyExperience[$index]" >
+                <select ng-model="modelMonthAttendedExperience[$index]" ng-options="m as m for m in month" ng-init="monthAttendedExperience='January'"></select>/
+                <select ng-model="modelYearAttendedExperience[$index]" ng-options="y as y for y in year" ng-init="yearAttendedExperience=2000"></select>
+                -
+                <select ng-model="modelMonthEndedExprience[$index]" ng-options="m as m for m in month" ng-init="monthEndedExprience='January'"></select>/
+                <select ng-model="modelYearEndedExprience[$index]" ng-options="y as y for y in year" ng-init="yearEndedExprience=2010"></select><br>
+                <textarea ng-model="modelDescriptionExperience[$index]" ng-show="true" cols="70" rows="10" ></textarea><br>
+                <a ng-click="saveExperience($index)">Save</a>
+                or
+                <a ng-click="cancelExperience()">Cancel</a>
+                or
+                <a ng-click="removeExperience($index)">Remove</a>
               </div>
               <br>
             </li>
           </ul>
+        </div>
+        <div ng-show="experienceAddEnabled">
+          <div>
+            <!--<input ng-model="editableSummary" ng-show="true" type="text" class="textboxclass"> <!--summaryEditorEnabled-->
+            Position *<br>
+            <textarea ng-model="positionExperience" ng-show="true" cols="20" rows="1" ></textarea><br>
+            Company Name *<br>
+            <textarea ng-model="companyExperience" ng-show="true" cols="20" rows="1" ></textarea><br>
+
+            Time Period *
+            <select ng-model="monthAttendedExperience" ng-options="m as m for m in month" ng-init="monthAttendedExperience='January'"></select>/
+            <select ng-model="yearAttendedExperience" ng-options="y as y for y in year" ng-init="yearAttendedExperience=2000"></select>
+            -
+            <select ng-model="monthEndedExprience" ng-options="m as m for m in month" ng-init="monthEndedExprience='January'"></select>/
+            <select ng-model="yearEndedExprience" ng-options="y as y for y in year" ng-init="yearEndedExprience=2010"></select><br>
+            Description<br>
+            <textarea ng-model="descriptionExperience" ng-show="true" cols="70" rows="10" ></textarea><br>
+          </div>
+          <div>
+            <button ng-click="saveNewExperience()" type="button" class="btn btn-primary topbottommargin">Save</button>
+            &nbsp;&nbsp;&nbsp;
+            <button ng-click="cancelNewExperience()" type="button" class="btn btn-danger topbottommargin">Cancel</button>
+            &nbsp;&nbsp;&nbsp;
+          </div>
         </div>
         <button type="button" class="btn btn-info addcontentbutton topbottommargin" ng-click="clickAddExperience()">Add Experience</button>
         <br>
