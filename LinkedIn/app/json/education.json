@@ -2,7 +2,8 @@
   {
     "university": "University of Pennsylvania - The Wharton School",
     "degree": "Bachelor of Science, Economics",
-    "duration": "1988 – June 1992",
+    "start": 1988,
+    "end": 1992,
     "image": "./images/universitylogo.png"
   }
 ]

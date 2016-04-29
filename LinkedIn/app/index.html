@@ -314,6 +314,9 @@
             </li>
           </ul>
         </div>
+        <button type="button" class="btn btn-info addcontentbutton topbottommargin" ng-click="clickAddExperience()">Add Experience</button>
+        <br>
+        <br>
         <br>
         <!-- LinkedIn articles -->
         <div>
@@ -399,6 +402,7 @@
                 <a ng-click="cancelSkill()">Cancel</a>
                 or
                 <a ng-click="removeSkill($index)">Remove</a>
+              </div>
             </li>
           </ul>
           <div ng-show="skillAddEnabled">
@@ -421,7 +425,7 @@
         <hr/>
 
         <!-- Education -->
-        <div>
+        <div ng-mouseenter="enterEducation()" ng-mouseleave="leaveEducation()">
           <div class="normalrow">
             <div><img src="./images/educationlogo.png" alt="educationlogo" width="30" height="35"/></div>
             <div><p class="textcentervertical contenttextsize">&nbsp;&nbsp;&nbsp;Education</p></div>
@@ -429,16 +433,53 @@
           <br>
           <ul>
             <li ng-repeat="e in education">
-              <div class="row">
+              <div class="row" ng-hide="educationEditorEnabled($index)">
                 <div class="col-sm-10">
-                      <p class="contenttextsize"><strong>{{e.university}}</strong></p>
-                      <p>{{e.degree}}</p>
-                      <p>{{e.duration}}</p>
+                  <p class="contenttextsize"><strong>{{e.university}}</strong></p>
+                  <p>{{e.degree}}</p>
+                  <p>{{e.start}}{{" - " + e.end}}</p>
+                  <img ng-click="clickEducationContent($index)" ng-show="educationEditorIconEnabled" src="./images/pencil.png" alt="logo" width="25" height="25"/>
                 </div>
                 <div class="col-sm-2"><img src="{{e.image}}" alt="logo" width="65" height="65"/></div>
               </div>
+              <div ng-show="educationEditorEnabled($index)">
+                <input ng-model="modelSchool[$index]" >
+                <input ng-model="modelDegree[$index]" >
+                <select ng-model="modeldateAttended[$index]" ng-options="y as y for y in year"></select>
+                -
+                <select ng-model="modeldateGraduate[$index]" ng-options="y as y for y in year"></select><br>
+                <a ng-click="saveEducation($index)">Save</a>
+                or
+                <a ng-click="cancelEducation()">Cancel</a>
+                or
+                <a ng-click="removeEducation($index)">Remove</a>
+              </div>
+              <br>
             </li>
           </ul>
+          <div ng-show="educationAddEnabled">
+            <div>
+              <!--<input ng-model="editableSummary" ng-show="true" type="text" class="textboxclass"> <!--summaryEditorEnabled-->
+              School *<br>
+              <textarea ng-model="newSchool" ng-show="true" cols="20" rows="1" ></textarea><br>
+              Dates Attended<br>
+              <select ng-model="dateAttended" ng-options="y as y for y in year" ng-init="dateAttended=2013"></select>
+              -
+              <select ng-model="dateGraduate" ng-options="y as y for y in year" ng-init="dateGraduate=2017"></select><br>
+              Degree<br>
+              <textarea ng-model="degree" ng-show="true" cols="40" rows="1" ></textarea><br>
+              Description<br>
+              <textarea ng-model="description" ng-show="true" cols="70" rows="10" ></textarea><br>
+            </div>
+            <div>
+              <button ng-click="saveNewEducation()" type="button" class="btn btn-primary topbottommargin">Save</button>
+              &nbsp;&nbsp;&nbsp;
+              <button ng-click="cancelNewEducation()" type="button" class="btn btn-danger topbottommargin">Cancel</button>
+              &nbsp;&nbsp;&nbsp;
+            </div>
+          </div>
+          <button type="button" class="btn btn-info addcontentbutton topbottommargin" ng-click="clickAddEducation()">Add Education</button>
+          <br>
           <br>
         </div>
 

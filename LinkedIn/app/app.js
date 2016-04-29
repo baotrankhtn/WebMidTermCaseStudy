@@ -349,4 +349,99 @@ app.controller('myCtrl', function ($scope, $http) { //<========= myContrl for al
     $scope.skill.push($scope.newItem);
     $scope.cancelNewSkill();
   }
+
+  // ============================================ Education ======================================================
+
+  // ----Edit education
+  $scope.educationEditorIconEnabled = false;
+  $scope.chosenEducation = -1;
+  $scope.modelSchool = [];
+  $scope.modelDegree = [];
+  $scope.modeldateAttended = [];
+  $scope.modeldateGraduate = [];
+
+  // Click edit icon
+  $scope.clickEducationContent = function(index)
+  {
+    // Show info
+    $scope.modelSchool[index] = $scope.education[index].university;
+    $scope.modelDegree[index] = $scope.education[index].degree;
+    $scope.modeldateAttended[index] = $scope.education[index].start;
+    $scope.modeldateGraduate[index] = $scope.education[index].end;
+
+    $scope.chosenEducation = index;
+  }
+
+  // Save info
+  $scope.saveEducation = function(index)
+  {
+    $scope.education[index].university = $scope.modelSchool[index];
+    $scope.education[index].degree = $scope.modelDegree[index];
+    $scope.education[index].start = $scope.modeldateAttended[index];
+    $scope.education[index].end = $scope.modeldateGraduate[index];
+    $scope.cancelEducation();
+  }
+  
+  // Show editor dialog
+  $scope.educationEditorEnabled = function(index)
+  {
+    if ($scope.chosenEducation == index)
+        return true;
+    return false;
+  }
+
+  // Cancel editor dialog
+  $scope.cancelEducation = function()
+  {
+    $scope.chosenEducation = -1;
+  }
+
+  // Remove education
+  $scope.removeEducation = function(index)
+  {
+    $scope.education.splice(index, 1);
+    $scope.cancelEducation();
+  }
+
+  // Show/Hide editor icon
+  $scope.enterEducation = function()
+  {
+    $scope.educationEditorIconEnabled = true;
+  }
+
+  $scope.leaveEducation = function()
+  {
+    $scope.educationEditorIconEnabled = false;
+  }
+
+  // ----Add new education
+  $scope.educationAddEnabled = false;
+  $scope.year = [1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,
+    2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030];
+
+  // Open New Education Dialog
+  $scope.clickAddEducation = function()
+  {
+    // reset
+    $scope.newSchool = "";
+    $scope.degree = "";
+    $scope.description = "";
+    $scope.educationAddEnabled = true;
+  }
+
+  // Cancel Adding new education
+  $scope.cancelNewEducation = function()
+  {
+    $scope.educationAddEnabled = false;
+  }
+
+  // Save new education
+  $scope.saveNewEducation = function()
+  {
+    // add
+    $scope.newItem = {"university": $scope.newSchool, "degree": $scope.degree, "start": $scope.dateAttended, "end":
+    $scope.dateGraduate, "image": "./images/universitylogo.png"};
+    $scope.education.push($scope.newItem);
+    $scope.cancelNewEducation();
+  }
 });
